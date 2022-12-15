@@ -581,14 +581,13 @@ GameObject:
   - component: {fileID: 79087010}
   - component: {fileID: 79087009}
   - component: {fileID: 79087008}
-  - component: {fileID: 79087011}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &79087007
 RectTransform:
   m_ObjectHideFlags: 0
@@ -654,40 +653,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 79087011}
-        m_TargetAssemblyTypeName: TweenProfile, Assembly-CSharp
-        m_MethodName: DeactivateTween
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 181267402}
-        m_TargetAssemblyTypeName: TweenProfile, Assembly-CSharp
-        m_MethodName: DeactivateTween
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1213100693}
-        m_TargetAssemblyTypeName: TweenProfile, Assembly-CSharp
-        m_MethodName: DeactivateTween
-        m_Mode: 1
+        m_TargetAssemblyTypeName: MultiTweenProfile, Assembly-CSharp
+        m_MethodName: InactiveTweenLoop
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Exit
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &79087009
@@ -728,31 +703,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 79087006}
   m_CullTransparentMesh: 1
---- !u!114 &79087011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 79087006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4759a1419ba0b6f4a846fa2dba8d21b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activationRect: {fileID: 948657561}
-  deactivationRect: {fileID: 743149239}
-  moveTweenTime: 0.25
-  rotationTweenTime: 0
-  scaleTweenTime: 0
-  OnCompleteActive: 0
-  OnCompleteInactive: 0
-  OnCompleteActiveEvents:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCompleteInactiveEvents:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &79859820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,14 +1553,13 @@ GameObject:
   - component: {fileID: 181267401}
   - component: {fileID: 181267400}
   - component: {fileID: 181267399}
-  - component: {fileID: 181267402}
   m_Layer: 5
   m_Name: Create Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &181267398
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1675,7 +1624,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 181267400}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1213100693}
+        m_TargetAssemblyTypeName: MultiTweenProfile, Assembly-CSharp
+        m_MethodName: InactiveTweenLoop
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: CreateRoom
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2098526162}
+        m_TargetAssemblyTypeName: LobbyNetworkManager, Assembly-CSharp
+        m_MethodName: OnClickCreateRoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &181267400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1714,31 +1687,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181267397}
   m_CullTransparentMesh: 1
---- !u!114 &181267402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181267397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4759a1419ba0b6f4a846fa2dba8d21b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activationRect: {fileID: 557887414}
-  deactivationRect: {fileID: 641324810}
-  moveTweenTime: 0.25
-  rotationTweenTime: 0
-  scaleTweenTime: 0
-  OnCompleteActive: 0
-  OnCompleteInactive: 0
-  OnCompleteActiveEvents:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCompleteInactiveEvents:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &199643517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2913,7 +2861,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.8
+  m_fontSize: 111.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4180,7 +4128,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 96.8
+  m_fontSize: 98.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4315,7 +4263,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 108.5
+  m_fontSize: 109.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4964,8 +4912,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1213100693}
-        m_TargetAssemblyTypeName: TweenProfile, Assembly-CSharp
-        m_MethodName: ActivateTween
+        m_TargetAssemblyTypeName: MultiTweenProfile, Assembly-CSharp
+        m_MethodName: ActiveTweenLoop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6002,7 +5950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1213100690
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6047,58 +5995,58 @@ MonoBehaviour:
   m_GameObject: {fileID: 1213100689}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4759a1419ba0b6f4a846fa2dba8d21b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 26883ee659c80ad45be6b6f8365b0dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activationRect: {fileID: 92764877}
-  deactivationRect: {fileID: 1781596816}
   moveTweenTime: 1
   rotationTweenTime: 0
   scaleTweenTime: 0
-  OnCompleteActive: 1
-  OnCompleteInactive: 1
-  OnCompleteActiveEvents:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 181267402}
-        m_TargetAssemblyTypeName: TweenProfile, Assembly-CSharp
-        m_MethodName: ActivateTween
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 79087011}
-        m_TargetAssemblyTypeName: TweenProfile, Assembly-CSharp
-        m_MethodName: ActivateTween
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnCompleteInactiveEvents:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 888315571}
-        m_TargetAssemblyTypeName: TweenProfile, Assembly-CSharp
-        m_MethodName: ActivateTween
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  tweenElements:
+  - id: CreateRoomPanel
+    tweenObj: {fileID: 1213100689}
+    ActiveTweenTransform: {fileID: 92764877}
+    InactiveTweenTransform: {fileID: 1781596816}
+    OnObjInteraction:
+      m_PersistentCalls:
+        m_Calls: []
+  - id: Exit
+    tweenObj: {fileID: 79087006}
+    ActiveTweenTransform: {fileID: 948657561}
+    InactiveTweenTransform: {fileID: 743149239}
+    OnObjInteraction:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 888315571}
+          m_TargetAssemblyTypeName: TweenProfile, Assembly-CSharp
+          m_MethodName: ActivateTween
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - id: CreateRoom
+    tweenObj: {fileID: 181267397}
+    ActiveTweenTransform: {fileID: 557887414}
+    InactiveTweenTransform: {fileID: 641324810}
+    OnObjInteraction:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1588935105}
+          m_TargetAssemblyTypeName: TweenProfile, Assembly-CSharp
+          m_MethodName: ActivateTween
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1232998750
 GameObject:
   m_ObjectHideFlags: 0
@@ -6702,7 +6650,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1453393153}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1588935105}
+        m_TargetAssemblyTypeName: TweenProfile, Assembly-CSharp
+        m_MethodName: DeactivateTween
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2098526162}
+        m_TargetAssemblyTypeName: LobbyNetworkManager, Assembly-CSharp
+        m_MethodName: OnClickLeave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1453393153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6928,6 +6900,7 @@ GameObject:
   - component: {fileID: 1588935102}
   - component: {fileID: 1588935104}
   - component: {fileID: 1588935103}
+  - component: {fileID: 1588935105}
   m_Layer: 5
   m_Name: RoomPanel
   m_TagString: Untagged
@@ -7000,6 +6973,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588935101}
   m_CullTransparentMesh: 1
+--- !u!114 &1588935105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588935101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4759a1419ba0b6f4a846fa2dba8d21b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationRect: {fileID: 92764877}
+  deactivationRect: {fileID: 1781596816}
+  moveTweenTime: 1
+  rotationTweenTime: 0
+  scaleTweenTime: 0
+  OnCompleteActive: 0
+  OnCompleteInactive: 1
+  OnCompleteActiveEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCompleteInactiveEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 888315571}
+        m_TargetAssemblyTypeName: TweenProfile, Assembly-CSharp
+        m_MethodName: ActivateTween
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1601522066
 GameObject:
   m_ObjectHideFlags: 0
@@ -8131,10 +8141,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826a3110a95615c44b0a55570820c270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: {fileID: 0}
-  roomPassword: {fileID: 0}
-  selectedGame: {fileID: 0}
-  maxPlayers: {fileID: 0}
+  roomNameInput: {fileID: 1148882277}
+  roomPasswordInput: {fileID: 463182819}
+  selectedGameInput: {fileID: 2049601800}
+  maxPlayersInput: {fileID: 1114472598}
+  roomNameTxt: {fileID: 442502961}
+  roomSettingsTxt: {fileID: 984112040}
 --- !u!1 &2103463052
 GameObject:
   m_ObjectHideFlags: 0

@@ -78,15 +78,6 @@ public class TweenProfile : MonoBehaviour
 
     #endregion
 
-    #region Life Cycle Functions
-
-    private void Awake()
-    {
-        gameObject.SetActive(false);
-    }
-
-    #endregion
-
     #region Public Functions
 
     public async void ActivateTween()

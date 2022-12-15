@@ -21,11 +21,7 @@ public class LobbyNetworkManager : MonoBehaviourPunCallbacks
     [SerializeField] TMP_Dropdown maxPlayersInput;
 
     [SerializeField] TextMeshProUGUI roomNameTxt;
-    [SerializeField] TextMeshProUGUI selectedGameTxt;
-    [SerializeField] TextMeshProUGUI maxPlayersTxt;
-
-    [SerializeField] GameObject createRoomPanel;
-    [SerializeField] GameObject roomPanel;
+    [SerializeField] TextMeshProUGUI roomSettingsTxt;
 
     private EGameMode selectedGameMode = EGameMode.DeliveryWithTheDead;
     private int selectedMaxPlayers = 1;
@@ -74,15 +70,25 @@ public class LobbyNetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        string newline = Environment.NewLine;
+
         //Change room layout to selected settings. I.E. room name text to room name
 
-        roomNameTxt.text = PhotonNetwork.CurrentRoom.Name;
-        selectedGameTxt.text = Enum.GetName(typeof(EGameMode), selectedGameMode);
-        maxPlayersTxt.text = selectedMaxPlayers.ToString();
+        roomNameTxt.text = "";
+        roomNameTxt.text += $"{PhotonNetwork.CurrentRoom.Name}";
 
-        //Tween from Create Room to the Room
-        createRoomPanel.SetActive(false);
-        roomPanel.SetActive(true);
+        int hostID = PhotonNetwork.CurrentRoom.MasterClientId;
+        string hostName = PhotonNetwork.CurrentRoom.GetPlayer(hostID).NickName;
+        roomSettingsTxt.text = "";
+        roomSettingsTxt.text += $"Host: {hostName}{newline}";
+        roomSettingsTxt.text += $"Selected Game: {Enum.GetName(typeof(EGameMode), selectedGameMode)}{newline}";
+        roomSettingsTxt.text += $"Max Players: {selectedMaxPlayers}{newline}";
+        roomSettingsTxt.text += $"Password: ????";
 
+    }
+
+    public void OnClickLeave()
+    {
+        PhotonNetwork.LeaveRoom();
     }
 }
