@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.tsgamedev.unityprojecttools": "file:D:/Unity Projects/Unity Custom Packages/Unity Project Tools",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.cinemachine": "2.8.9",
     "com.unity.ide.visualstudio": "2.0.17",
