@@ -6,6 +6,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using System.Linq;
 
+[Serializable]
 public enum EGameMode
 {
     DeliveryWithTheDead,
@@ -13,16 +14,17 @@ public enum EGameMode
     OneInTheChamber
 }
 
+[Serializable]
 public struct RoomData
 {
-    public RoomInfo roomInfo;
+    public string roomName;
     public EGameMode selectedGameMode;
     public int selectedMaxPlayers;
     public string hostName;
 
-    public RoomData(RoomInfo roomInfo, EGameMode selectedGameMode, int selectedMaxPlayers, string hostName)
+    public RoomData(string roomName, EGameMode selectedGameMode, int selectedMaxPlayers, string hostName)
     {
-        this.roomInfo = roomInfo;
+        this.roomName = roomName;
         this.selectedGameMode = selectedGameMode;
         this.selectedMaxPlayers = selectedMaxPlayers;
         this.hostName = hostName;
@@ -59,11 +61,9 @@ public class LobbyNetworkManager : MonoBehaviourPunCallbacks
 
     #region Life Cycle
 
-    private PhotonView photonView;
     private void Start()
     {
         PhotonNetwork.JoinLobby(typedLobby);
-        photonView = PhotonView.Get(this);
     }
 
     #endregion
@@ -166,16 +166,21 @@ public class LobbyNetworkManager : MonoBehaviourPunCallbacks
         roomSettingsTxt.text += $"Max Players: {selectedMaxPlayers}{newline}";
         roomSettingsTxt.text += $"Password: ????";
 
-        photonView.RPC("RoomDataCreation", RpcTarget.All, hostName);
+        Debug.Log(PhotonNetwork.CurrentRoom.Name);
+        Debug.Log(hostName);
+        Debug.Log(selectedGameMode);
+        Debug.Log(selectedMaxPlayers);
+
+        this.photonView.RPC("RoomDataCreation", RpcTarget.AllViaServer, PhotonNetwork.CurrentRoom.Name, selectedGameMode, selectedMaxPlayers, hostName);
     }
 
     [PunRPC]
-    private void RoomDataCreation(string hostName)
+    private void RoomDataCreation(string roomName, EGameMode selectedGame, int selectedMaxPlayers, string hostName)
     {
-        RoomData newRoomData = new RoomData(PhotonNetwork.CurrentRoom, selectedGameMode, selectedMaxPlayers, hostName);
+        Debug.Log($"Adding Room");
+        RoomData newRoomData = new RoomData(roomName, selectedGame, selectedMaxPlayers, hostName);
         activeRoomDatas.Add(newRoomData);
-
-        Debug.Log($"Room {newRoomData.roomInfo.Name} created. New count of active room datas {activeRoomDatas.Count}");
+        Debug.Log($"Room {newRoomData.roomName} created. New count of active room datas {activeRoomDatas.Count}");
     }
 
     private void RoomListUpdate(List<RoomInfo> roomList)
@@ -189,12 +194,12 @@ public class LobbyNetworkManager : MonoBehaviourPunCallbacks
             {
                 foreach (RoomInfo roominfo in roomList)
                 {
-                    if (roomdata.roomInfo.Name == roominfo.Name)
+                    if (roomdata.roomName == roominfo.Name)
                         return;
 
                     if(roominfo == roomList.Last())
                     {
-                        Debug.Log($"Removing {roomdata.roomInfo.Name} Room");
+                        Debug.Log($"Removing {roomdata.roomName} Room");
                         activeRoomDatas.Remove(roomdata);
                     }
                 }

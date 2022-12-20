@@ -22,12 +22,12 @@ public class RoomItem : MonoBehaviour
     public void Reinitialise(RoomData roomData)
     {
         //reset all the data to the passed in data
-        roomButtonTitleText.text = roomData.roomInfo.Name;
+        roomButtonTitleText.text = roomData.roomName;
 
         roomButton.onClick.AddListener(() => 
         {
             lobbyRoomTitleDisplay.text = "";
-            lobbyRoomTitleDisplay.text = roomData.roomInfo.Name;
+            lobbyRoomTitleDisplay.text = roomData.roomName;
             lobbyRoomSettingsDisplay.text= "";
             lobbyRoomSettingsDisplay.text += $"Host Name: {roomData.hostName}{newLine}";
             lobbyRoomSettingsDisplay.text += $"Game Selected: {roomData.selectedGameMode}{newLine}";

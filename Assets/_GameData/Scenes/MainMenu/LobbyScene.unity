@@ -8003,7 +8003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1588935102
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9614,6 +9614,7 @@ MonoBehaviour:
   - {fileID: 1293368368}
   - {fileID: 2098379748}
   - {fileID: 670756988}
+  activeRoomDatas: []
   roomItemContent: {fileID: 1763993384}
 --- !u!114 &2098526163
 MonoBehaviour:
@@ -9627,7 +9628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 0
+  ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
   Synchronization: 3
