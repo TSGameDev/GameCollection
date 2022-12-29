@@ -1,3 +1,4 @@
+using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class RoomItem : MonoBehaviour
     [SerializeField] TextMeshProUGUI roomButtonTitleText;
     [SerializeField] TextMeshProUGUI lobbyRoomTitleDisplay;
     [SerializeField] TextMeshProUGUI lobbyRoomSettingsDisplay;
+    [SerializeField] Button joinRoomButton;
 
     Button roomButton;
 
@@ -16,10 +18,16 @@ public class RoomItem : MonoBehaviour
         roomButton = GetComponent<Button>();    
     }
 
-    public void Reinitialise(RoomInfo roomInfo)
+    public void Reinitialise(RoomData roomData)
     {
-        //reset all the data to the passed in data
-        //reenable the object
+        roomButtonTitleText.text = roomData.roomName;
+        roomButton.onClick.AddListener(() => 
+        {
+            lobbyRoomTitleDisplay.text = roomData.roomName;
+            lobbyRoomSettingsDisplay.text += $"Max Players: {roomData.maxPlayers}";
+            lobbyRoomSettingsDisplay.text += $"Game Mode: {roomData.gameMode}";
+            joinRoomButton.onClick.AddListener(() => { PhotonNetwork.JoinRoom(roomData.roomName); });
+        });
     }
 
 }

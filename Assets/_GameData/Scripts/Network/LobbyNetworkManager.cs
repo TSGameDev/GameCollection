@@ -15,9 +15,17 @@ public enum EGameMode
 
 public struct RoomData
 {
-    public RoomData(RoomInfo roomInfo, EGameMode selectedGameMode, int selectedMaxPlayers, string hostName)
-    {
+    public int maxPlayers;
+    public EGameMode gameMode;
+    //public string hostName;
+    public string roomName;
 
+    public RoomData(string roomName, EGameMode gameMode, int maxPlayers)
+    {
+        this.maxPlayers = maxPlayers;
+        this.gameMode = gameMode;
+        //this.hostName = hostName;
+        this.roomName = roomName;
     }
 }
 
@@ -42,6 +50,7 @@ public class LobbyNetworkManager : MonoBehaviourPunCallbacks
 
     [SerializeField] GameObject roomItemPrefab;
     [SerializeField] List<RoomItem> roomItemObjects;
+    [SerializeField] GameObject roomItemContent;
 
     #endregion
 
@@ -84,9 +93,15 @@ public class LobbyNetworkManager : MonoBehaviourPunCallbacks
     {
         if(roomNameInput.text.Length >= 3)
         {
+            ExitGames.Client.Photon.Hashtable customProperties = new ExitGames.Client.Photon.Hashtable()
+            {
+                {"gameMode", selectedGameMode}
+            };
+
             RoomOptions roomOptions = new()
             {
-                MaxPlayers = (byte)selectedMaxPlayers
+                MaxPlayers = (byte)selectedMaxPlayers,
+                CustomRoomProperties = customProperties
             };
 
             PhotonNetwork.CreateRoom(roomNameInput.text, roomOptions);
@@ -138,13 +153,39 @@ public class LobbyNetworkManager : MonoBehaviourPunCallbacks
 
     private void RoomListUpdate(List<RoomInfo> roomList)
     {
-        //deactive all room button objects
+        List<RoomData> activeRoomDatas = new();
+
+        //loop throug all room infos
+        foreach (RoomInfo roominfo in roomList)
+        {
+            //create roomdata for each activeRoom
+            RoomData newRoom = new(roominfo.Name, (EGameMode)roominfo.CustomProperties["gameMode"], roominfo.MaxPlayers);
+            activeRoomDatas.Add(newRoom);
+        }
+
 
         //loop throug all room button objects
-        //Create current rooms data
-        //Call the Reinitialise function passing in roomdata
+        for(int i = 0; i > roomItemObjects.Count - 1; i++)
+        {
+            //if there are more rooms than buttons spawn more buttons
+            if(roomItemObjects.Count < activeRoomDatas.Count)
+            {
+                int spawnButtonAmount = activeRoomDatas.Count - roomItemObjects.Count;
 
-        //spawn additional room button objects if required.
+                for(int x = 0; x > spawnButtonAmount; x++)
+                {
+                    GameObject newRoomItem = Instantiate(roomItemPrefab, roomItemContent.transform);
+                    RoomItem newRoomItemComp = newRoomItem.GetComponent<RoomItem>();
+                    roomItemObjects.Add(newRoomItemComp);
+                }
+            }
+
+            //deactive all room button objects
+            roomItemObjects[i].gameObject.SetActive(false);
+
+            //Call the Reinitialise function passing in roomdata
+            roomItemObjects[i].Reinitialise(activeRoomDatas[i]);
+        }
     }
 
     #endregion
