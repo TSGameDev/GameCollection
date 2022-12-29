@@ -1,11 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
 using Photon.Pun;
 using Photon.Realtime;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
+[Serializable]
 public enum EGameMode
 {
     DeliveryWithTheDead,
@@ -93,17 +94,10 @@ public class LobbyNetworkManager : MonoBehaviourPunCallbacks
     {
         if(roomNameInput.text.Length >= 3)
         {
-            ExitGames.Client.Photon.Hashtable customProperties = new ExitGames.Client.Photon.Hashtable()
-            {
-                {"gameMode", selectedGameMode}
-            };
-
             RoomOptions roomOptions = new()
             {
                 MaxPlayers = (byte)selectedMaxPlayers,
-                CustomRoomProperties = customProperties
             };
-
             PhotonNetwork.CreateRoom(roomNameInput.text, roomOptions);
         }
     }
@@ -133,6 +127,13 @@ public class LobbyNetworkManager : MonoBehaviourPunCallbacks
 
     private void RoomSettingSetup()
     {
+        Hashtable roomProperties = new();
+        roomProperties.Add("gameMode", ((int)selectedGameMode));
+
+        bool hasSent = PhotonNetwork.CurrentRoom.SetCustomProperties(roomProperties);
+        Debug.Log(hasSent);
+        Debug.Log($"GameMode: {PhotonNetwork.CurrentRoom.CustomProperties["gameMode"]}");
+
         string newline = Environment.NewLine;
 
         //Sets room title text
@@ -158,8 +159,24 @@ public class LobbyNetworkManager : MonoBehaviourPunCallbacks
         //loop throug all room infos
         foreach (RoomInfo roominfo in roomList)
         {
+            string roomName = roominfo.Name;
+            Debug.Log($"Room Name: {roomName}");
+            Debug.Log($"Room Info Custom Properties: {roominfo.CustomProperties.Count}");
+            var gameModeObj = roominfo.CustomProperties["gameMode"];
+            Debug.Log($"Game Mode Obj: {gameModeObj}");
+            Debug.Log($"Game Mode Obj: {gameModeObj.GetType()}");
+
+            int gameModeInt = (int)gameModeObj;
+            Debug.Log($"Game Mode Int: {gameModeInt}");
+
+            EGameMode gameMode = (EGameMode)gameModeObj;
+            Debug.Log($"Game Mode: {gameMode}");
+
+            int maxPlayers = roominfo.MaxPlayers;
+            Debug.Log($"Max Players: {maxPlayers}");
+
             //create roomdata for each activeRoom
-            RoomData newRoom = new(roominfo.Name, (EGameMode)roominfo.CustomProperties["gameMode"], roominfo.MaxPlayers);
+            RoomData newRoom = new(roomName, gameMode, maxPlayers);
             activeRoomDatas.Add(newRoom);
         }
 
