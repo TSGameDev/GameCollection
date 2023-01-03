@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "com.tsgamedev.unityprojecttools": {
-      "version": "file:D:/Unity Projects/Unity Custom Packages/Unity Project Tools",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
