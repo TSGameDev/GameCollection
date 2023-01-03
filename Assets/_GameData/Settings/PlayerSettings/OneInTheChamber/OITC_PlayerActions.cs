@@ -22,9 +22,232 @@ public partial class @OITC_PlayerActions : IInputActionCollection2, IDisposable
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""OITC_PlayerActions"",
-    ""maps"": [],
+    ""maps"": [
+        {
+            ""name"": ""One In The Chamber"",
+            ""id"": ""3b4c18f7-6537-4cf3-bf42-52d7c9a6e53d"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""5f47c129-1f5e-4801-aedf-024009c7679c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""f5ddeddb-cf4d-4c2c-9083-0a70a8eb73bb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dodge"",
+                    ""type"": ""Button"",
+                    ""id"": ""4dd8b97a-81b5-433a-acad-22160d8ef279"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Mouse Delta"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""3cba504c-0c15-455a-8c11-3a7b01c43c80"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""33c92921-41d0-4f4d-ae81-d25bff1a6fb2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ADS"",
+                    ""type"": ""Button"",
+                    ""id"": ""276502ea-7ed0-4d97-9477-69b6a15a7d6c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Melee"",
+                    ""type"": ""Button"",
+                    ""id"": ""06a6c256-9ca0-4a07-b15d-bec29809fdb4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""5d45a86a-e46d-4ef3-aa8a-9d51367faf59"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""4cb31880-3cb8-4591-bd69-78ed811785fc"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""d222bd75-cd36-45b2-9da1-1d6b86ab137e"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""44acda77-628d-439c-b5e6-8f580b8b9c04"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""650ad0bd-016d-43b5-9311-355937e62689"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""f95591b1-a292-4207-a460-e9ae009cd165"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""15bdf929-f0fc-4371-9647-2cc3c7668a79"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7621cc80-7bc9-4d43-854a-52b807d38d38"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dodge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3dd0d2dc-9bad-42dc-b03a-1d045770d733"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse Delta"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90a2505f-96c7-45b1-9571-ae99664b5383"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a350468d-deaf-4c21-8edd-df295cc0fff0"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ADS"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""558fde1d-6548-469d-b0d0-63c9bda31cdf"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Melee"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a5b392b4-18dd-4f49-93ab-39f96b1cff68"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        }
+    ],
     ""controlSchemes"": []
 }");
+        // One In The Chamber
+        m_OneInTheChamber = asset.FindActionMap("One In The Chamber", throwIfNotFound: true);
+        m_OneInTheChamber_Movement = m_OneInTheChamber.FindAction("Movement", throwIfNotFound: true);
+        m_OneInTheChamber_Run = m_OneInTheChamber.FindAction("Run", throwIfNotFound: true);
+        m_OneInTheChamber_Dodge = m_OneInTheChamber.FindAction("Dodge", throwIfNotFound: true);
+        m_OneInTheChamber_MouseDelta = m_OneInTheChamber.FindAction("Mouse Delta", throwIfNotFound: true);
+        m_OneInTheChamber_Fire = m_OneInTheChamber.FindAction("Fire", throwIfNotFound: true);
+        m_OneInTheChamber_ADS = m_OneInTheChamber.FindAction("ADS", throwIfNotFound: true);
+        m_OneInTheChamber_Melee = m_OneInTheChamber.FindAction("Melee", throwIfNotFound: true);
+        m_OneInTheChamber_Reload = m_OneInTheChamber.FindAction("Reload", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -79,5 +302,105 @@ public partial class @OITC_PlayerActions : IInputActionCollection2, IDisposable
     public int FindBinding(InputBinding bindingMask, out InputAction action)
     {
         return asset.FindBinding(bindingMask, out action);
+    }
+
+    // One In The Chamber
+    private readonly InputActionMap m_OneInTheChamber;
+    private IOneInTheChamberActions m_OneInTheChamberActionsCallbackInterface;
+    private readonly InputAction m_OneInTheChamber_Movement;
+    private readonly InputAction m_OneInTheChamber_Run;
+    private readonly InputAction m_OneInTheChamber_Dodge;
+    private readonly InputAction m_OneInTheChamber_MouseDelta;
+    private readonly InputAction m_OneInTheChamber_Fire;
+    private readonly InputAction m_OneInTheChamber_ADS;
+    private readonly InputAction m_OneInTheChamber_Melee;
+    private readonly InputAction m_OneInTheChamber_Reload;
+    public struct OneInTheChamberActions
+    {
+        private @OITC_PlayerActions m_Wrapper;
+        public OneInTheChamberActions(@OITC_PlayerActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_OneInTheChamber_Movement;
+        public InputAction @Run => m_Wrapper.m_OneInTheChamber_Run;
+        public InputAction @Dodge => m_Wrapper.m_OneInTheChamber_Dodge;
+        public InputAction @MouseDelta => m_Wrapper.m_OneInTheChamber_MouseDelta;
+        public InputAction @Fire => m_Wrapper.m_OneInTheChamber_Fire;
+        public InputAction @ADS => m_Wrapper.m_OneInTheChamber_ADS;
+        public InputAction @Melee => m_Wrapper.m_OneInTheChamber_Melee;
+        public InputAction @Reload => m_Wrapper.m_OneInTheChamber_Reload;
+        public InputActionMap Get() { return m_Wrapper.m_OneInTheChamber; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(OneInTheChamberActions set) { return set.Get(); }
+        public void SetCallbacks(IOneInTheChamberActions instance)
+        {
+            if (m_Wrapper.m_OneInTheChamberActionsCallbackInterface != null)
+            {
+                @Movement.started -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnMovement;
+                @Run.started -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnRun;
+                @Run.performed -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnRun;
+                @Run.canceled -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnRun;
+                @Dodge.started -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnDodge;
+                @Dodge.performed -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnDodge;
+                @Dodge.canceled -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnDodge;
+                @MouseDelta.started -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnMouseDelta;
+                @MouseDelta.performed -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnMouseDelta;
+                @MouseDelta.canceled -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnMouseDelta;
+                @Fire.started -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnFire;
+                @ADS.started -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnADS;
+                @ADS.performed -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnADS;
+                @ADS.canceled -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnADS;
+                @Melee.started -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnMelee;
+                @Melee.performed -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnMelee;
+                @Melee.canceled -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnMelee;
+                @Reload.started -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_OneInTheChamberActionsCallbackInterface.OnReload;
+            }
+            m_Wrapper.m_OneInTheChamberActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
+                @Run.started += instance.OnRun;
+                @Run.performed += instance.OnRun;
+                @Run.canceled += instance.OnRun;
+                @Dodge.started += instance.OnDodge;
+                @Dodge.performed += instance.OnDodge;
+                @Dodge.canceled += instance.OnDodge;
+                @MouseDelta.started += instance.OnMouseDelta;
+                @MouseDelta.performed += instance.OnMouseDelta;
+                @MouseDelta.canceled += instance.OnMouseDelta;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @ADS.started += instance.OnADS;
+                @ADS.performed += instance.OnADS;
+                @ADS.canceled += instance.OnADS;
+                @Melee.started += instance.OnMelee;
+                @Melee.performed += instance.OnMelee;
+                @Melee.canceled += instance.OnMelee;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
+            }
+        }
+    }
+    public OneInTheChamberActions @OneInTheChamber => new OneInTheChamberActions(this);
+    public interface IOneInTheChamberActions
+    {
+        void OnMovement(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
+        void OnDodge(InputAction.CallbackContext context);
+        void OnMouseDelta(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
+        void OnADS(InputAction.CallbackContext context);
+        void OnMelee(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
 }
